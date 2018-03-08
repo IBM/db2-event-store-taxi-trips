@@ -1,0 +1,7 @@
+export APPJARS=.:./libs/ibm-event.jar:./libs/scala-library.jar
+export CLASSPATH="$SPARK_HOME/jars/*":$APPJARS
+
+IP=`./getIP.sh`
+
+echo java WriteES $IP 5 Taxi50k.json
+java WriteES $IP 5 Taxi50k.json
