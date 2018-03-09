@@ -1,3 +1,5 @@
+package com.ibm.developer.code.patterns.db2eventstoretaxitrips;
+
 //
 // Read a Taxi records file and write to Event Store
 //
@@ -31,28 +33,30 @@ public class WriteES {
     public static void main(String args[]) {
         StringBuffer buf = new StringBuffer(500);
         String strline;
-        int rate, count;
-        long recordNo, startMillis, endMillis;
+        int rate = 0;
+        int count;
+        long recordNo, recordsInserted, startMillis, endMillis;
         long startM, stopM;
         long totalInsertTime;
         TaxiRecord record;
         InsertResult insertResult;
 
         if (args.length != 3) {
-            System.out.println("usage: WriteES <IP address> <rate> <file>");
+            System.err.println("usage: WriteES <IP address> <rate> <file>");
+            System.exit(1);
         }
         try {
             rate = Integer.parseInt(args[1]);
         } catch(NumberFormatException e1) {
-            System.out.println("Number format exception on: " + args[1]);
-            return;
+            System.err.println("Number format exception on: " + args[1]);
+            System.exit(1);
         }
         if (rate <= 0) {
-            System.out.println("The rate cannot be smaller or equal to zero");
-            return;
+            System.err.println("The rate cannot be smaller or equal to zero");
+            System.exit(1);
         }
         System.out.println("Rate: " + rate + " records/second");
-        
+
         // The IP changes each time we restart Event Store Desktop
         // The IP is in ifconfig at utun1
         // ConfigurationReader.setConnectionEndpoints("9.80.110.74:5555");
@@ -66,11 +70,17 @@ public class WriteES {
             ResolvedTableSchema taxiTab = eventContext.getTable("TaxiTrips");
             ObjectMapper objectMapper = new ObjectMapper();
 
+            int everyNth = 3;  // Speed this up w/ every Nth record sampling
             recordNo = 1L;
-            count = 0; // count 
+            recordsInserted = 0;
+            count = 0; // count
             totalInsertTime = 0;
             startMillis = System.currentTimeMillis(); // for insert rate
             while ((strline = br.readLine()) != null)   {
+               if (0 != recordNo % everyNth) {
+                   recordNo++;
+                   continue;
+               }
                // I have a JSON doc, now process it
                record = objectMapper.readValue(strline, TaxiRecord.class);;
                Row row = cre8Row(recordNo, record);
@@ -84,10 +94,12 @@ public class WriteES {
                if (insertResult.failed())
                    System.out.println("insertResult: " +
                                       insertResult.toString());
-               if (0 == (recordNo) % 20)
+               recordsInserted++;  // Keep track for when we insert
+               if (0 == (recordNo) % 20) {
                    System.out.println("Number of records inserted: " +
-                                      recordNo + ", total time: " +
-                                      totalInsertTime + "ms");
+                           recordsInserted + ", total time: " +
+                           totalInsertTime + "ms");
+               }
                recordNo++;
                count++;
                // If we have the rate number of records, see if we need to sleep
@@ -107,8 +119,8 @@ public class WriteES {
             }
 
         } catch (IOException e3) {
-            System.out.println("Error: " + e3.toString());
-            return;
+            System.err.println("Error: " + e3.toString());
+            System.exit(1);
         }
         eventContext.cleanUp();
         return;
