@@ -1,3 +1,5 @@
+package com.ibm.developer.code.patterns.db2eventstoretaxitrips;
+
 //
 // Class to contain Taxi record
 //
