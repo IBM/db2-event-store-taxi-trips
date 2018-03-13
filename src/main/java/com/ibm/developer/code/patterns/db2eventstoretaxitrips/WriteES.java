@@ -34,6 +34,7 @@ public class WriteES {
         StringBuffer buf = new StringBuffer(500);
         String strline;
         int rate = 0;
+        int everyNth = 1;
         int count;
         long recordNo, recordsInserted, startMillis, endMillis;
         long startM, stopM;
@@ -41,14 +42,14 @@ public class WriteES {
         TaxiRecord record;
         InsertResult insertResult;
 
-        if (args.length != 3) {
-            System.err.println("usage: WriteES <IP address> <rate> <file>");
+        if (args.length < 3 || args.length > 4 ) {
+            System.err.println("usage: WriteES <IP address> <rate> <file> [<every-nth>]");
             System.exit(1);
         }
         try {
             rate = Integer.parseInt(args[1]);
         } catch(NumberFormatException e1) {
-            System.err.println("Number format exception on: " + args[1]);
+            System.err.println("Number format exception on rate=" + args[1]);
             System.exit(1);
         }
         if (rate <= 0) {
@@ -56,6 +57,19 @@ public class WriteES {
             System.exit(1);
         }
         System.out.println("Rate: " + rate + " records/second");
+
+        if (args.length == 4 ) {
+            try {
+                everyNth = Integer.parseInt(args[3]);
+            } catch(NumberFormatException e1) {
+                System.err.println("Number format exception on everyNth=" + args[1]);
+                System.exit(1);
+            }
+            if (everyNth <= 0) {
+                System.err.println("The everyNth arg cannot be smaller or equal to zero");
+                System.exit(1);
+            }
+        }
 
         // The IP changes each time we restart Event Store Desktop
         // The IP is in ifconfig at utun1
@@ -70,7 +84,6 @@ public class WriteES {
             ResolvedTableSchema taxiTab = eventContext.getTable("TaxiTrips");
             ObjectMapper objectMapper = new ObjectMapper();
 
-            int everyNth = 3;  // Speed this up w/ every Nth record sampling
             recordNo = 1L;
             recordsInserted = 0;
             count = 0; // count
