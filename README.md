@@ -46,7 +46,7 @@ When the reader has completed this code pattern, they will understand how to:
 
 ### 1. Install IBM Db2 Event Store Developer Edition
 
-Installation instructions and requirements are [here.](https://www.ibm.com/support/knowledgecenter/en/SSGNPV/eventstore/desktop/install.html)
+Install IBM® Db2® Event Store Developer Edition on Mac, Linux, or Windows by following the instructions [here.](https://www.ibm.com/support/knowledgecenter/en/SSGNPV/eventstore/desktop/install.html)
 
 > Note: This code pattern was developed with EventStore-DeveloperEdition 1.1.4
 
@@ -70,7 +70,8 @@ mvn -v
 
 To download and install maven, refer to [maven.](https://maven.apache.org/download.cgi)
 
-#### Download dependencies and compile the Java code
+#### Build the event loader
+Use maven to download dependencies and compile the Java code with the following commands:
 
 ```
 cd db2-event-store-taxi-trips
@@ -79,7 +80,7 @@ mvn install
 mvn compile
 ```
 
-### 4. Create the Jupyter notebook in DSX Local
+### 4. Create the Jupyter notebook
 
 > Note: Db2 Event Store is built with Data Science Experience (DSX) Local
 
@@ -107,7 +108,7 @@ The new notebook is now open and ready for execution.
 
 #### Run the event loader
 ```
-mvn exec:java -Dexec.mainClass=com.ibm.developer.code.patterns.db2eventstoretaxitrips.WriteES -Dexec.args=0.0.0.0 50 data/Taxi50k.json
+mvn exec:java -Dexec.mainClass=com.ibm.developer.code.patterns.db2eventstoretaxitrips.WriteES -Dexec.args="0.0.0.0 50 data/Taxi50k.json"
 ```
 
 # Sample output
