@@ -1,3 +1,5 @@
+package com.ibm.developer.code.patterns.db2eventstoretaxitrips;
+
 //
 // Read a Taxi records file and write to Event Store
 //
@@ -38,7 +40,7 @@ import org.apache.spark.sql.catalyst.expressions.GenericRow;
 public class EventStoreWriter implements Runnable {
     public String ip = null;
     public int rate = 5; 
-    public String file="./Taxi50k.json";
+    public String file="data/Taxi50k.json";
     public String DBName = "TESTDB";
     public String TabName = "TaxiTrips";
     public String user = null;

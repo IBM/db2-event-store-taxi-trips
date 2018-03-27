@@ -1,3 +1,5 @@
+package com.ibm.developer.code.patterns.db2eventstoretaxitrips;
+
 import java.net.*;
 import java.io.*;
 
