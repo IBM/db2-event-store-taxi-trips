@@ -1,3 +1,5 @@
+package com.ibm.developer.code.patterns.db2eventstoretaxitrips;
+
 //
 // Try connecting to Db2 Event Store
 //
