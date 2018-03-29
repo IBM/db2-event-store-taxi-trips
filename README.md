@@ -10,10 +10,9 @@ Credit goes to Jacques Roy for the original Java code and Jupyter notebook.
 
 When the reader has completed this code pattern, they will understand how to:
 * Install IBM Db2 Event Store developer edition
-* Interact with Db2 Event Store through a notebook
+* Interact with Db2 Event Store using Python and a Jupyter notebook
 * Use a Java program to insert into IBM Db2 Event Store
-* Query the database while inserts are in progress
-* Use the asynchronous API to insert into a Db2 Event Store table
+* Query the database and chart statistics while events are processed
 
 ![](doc/source/images/architecture.png)
 
@@ -40,9 +39,9 @@ When the reader has completed this code pattern, they will understand how to:
 
 1. [Install IBM Db2 Event Store Developer Edition](#1-install-ibm-db2-event-store-developer-edition)
 1. [Clone the repo](#2-clone-the-repo)
-1. [Build the Java event loader](#3-build-the-java-event-loader)
+1. [Build and run the Java event loader](#3-build-and-run-the-java-event-loader)
 1. [Create the Jupyter notebook in DSX Local](#4-create-the-jupyter-notebook-in-dsx-Local)
-1. [Run the notebook and the loader](#5-run-the-notebook-and-the-loader)
+1. [Run the notebook](#5-run-the-notebook)
 
 ### 1. Install IBM Db2 Event Store Developer Edition
 
@@ -58,7 +57,7 @@ Clone the `db2-event-store-taxi-trips` locally. In a terminal, run:
 git clone https://github.com/IBM/db2-event-store-taxi-trips
 ```
 
-### 3. Build the Java event loader
+### 3. Build and run the Java event loader
 
 #### Pre-requisite
 
@@ -70,46 +69,59 @@ mvn -v
 
 To download and install maven, refer to [maven.](https://maven.apache.org/download.cgi)
 
-#### Build the event loader
-Use maven to download dependencies and compile the Java code with the following commands:
+#### Download dependencies
+Use maven to download the dependencies with the following commands:
 
 ```
 cd db2-event-store-taxi-trips
 mvn clean
 mvn install
-mvn compile
 ```
+
+#### Compile and run the event loader daemon
+The event loader runs as a daemon and waits for the notebook to tell it to start and stop
+the event stream.
+
+The args string contains `"port host user password"` matching the settings in the notebook.
+
+```
+mvn compile exec:java -Dexec.mainClass=com.ibm.developer.code.patterns.db2eventstoretaxitrips.StartLoader -Dexec.args="9292 0.0.0.0 admin password"
+```
+
+> Note: `mvn compile` can be done separately, but including it before `exec` gives you a recompile as needed if the code has changed.
+
+#### Killing the daemon
+Use `CTRL-C` to kill the event loader daemon when you are done with it.
 
 ### 4. Create the Jupyter notebook
 
 > Note: Db2 Event Store is built with Data Science Experience (DSX) Local
 
-We access Db2 Event Store through a new notebook.
-We setup the environment that will allow us to create a database and the appropriate table
-for this code pattern.
+The git repo includes a Jupyter notebook which demonstrates interacting with
+Db2 Event Store with Spark SQL and matplotlib.
+ 
+The notebook also demonstrates basics such as:
+* Create a database
+* Drop a database
+* Create a table
+* Query a table
 
-#### Importing a Notebook
-We need to import a notebook in our environment.
-* From the drop down menu (three horizontal lines in the upper left corner), select My Notebooks.
-* Click on "add notebook"
-* Provide a name
-* Select "From File" 
-* Click “Choose File”, navigate to the lab directory and select the file Lab+Notebook.ipynb.
-* Scroll down and click on “Create Notebook”
+#### Importing the Notebook
+
+Use the Db2 Event Store / DSX Local UI to create and run the notebook.
+
+1. From the drop down menu (three horizontal lines in the upper left corner), select `My Notebooks`.
+1. Click on `add notebooks`.
+1. Select the `From File` tab.
+1. Provide a name.
+1. Click `Choose File` and navigate to the `notebooks` directory in your cloned repo. Select the file `taxi_trips.ipynb`.
+1. Scroll down and click on `Create Notebook`.
 The new notebook is now open and ready for execution.
 
-### 5. Run the notebook and the loader
+### 5. Run the notebook
 
-> TODO:  Getting the IP Addr
-
-#### Run the notebook with Run all Cells
-
-> TODO: Screen shots and usual comments about running a notebook
-
-#### Run the event loader
-```
-mvn exec:java -Dexec.mainClass=com.ibm.developer.code.patterns.db2eventstoretaxitrips.WriteES -Dexec.args="0.0.0.0 50 data/Taxi50k.json"
-```
+1. Edit the `HOST` constant in the first code cell. You will need to enter your host's IP address here.
+2. Run the notebook using the menu `Cell > Run all` or run the cells individually with the play button.
 
 # Sample output
 
