@@ -1,1 +1,0 @@
-ifconfig | grep -A 1 eth1 | grep "inet " | awk -F ' ' '{ print $2;}'
