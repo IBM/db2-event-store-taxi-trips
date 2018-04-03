@@ -125,13 +125,47 @@ The new notebook is now open and ready for execution.
 
 # Sample output
 
-> TODO: screenshots, etc...
+## Java event loader
+
+The Java daemon waits until the notebook tells it to start loading events. When you run the notebook code after **3.3 Start the insertion program** the cell output will say `Insert process started` and the Java program output will begin (or restart) to print messages like these:
+
+```
+Number of records inserted: 400, total time: 286ms
+Number of records inserted: 800, total time: 348ms
+Number of records inserted: 1200, total time: 391ms
+Number of records inserted: 1600, total time: 434ms
+Number of records inserted: 2000, total time: 473ms
+```
+
+The provided JSON file has 50,000 events.  The loader continues until it runs out of events or until the final cell of the notebook signals for it to stop.
+
+## Run SQL queries
+
+### Count(*)
+
+The first query to try is a simple `count(*)` query. Using the `show()` function you will see that you have successfully inserted and queried events. You can run this cell over and over to see the count increase.
+
+![](doc/source/images/count.png)
+
+### Group by time
+
+The next query uses a **GROUP BY** to aggregate by time. With this query you will see the counts and average stats for each 15 minute interval. By running this repeatedly (the notebook includes a short query loop), you will see that as the events come in the latest time interval has a growing count and changing averages.
+
+![](doc/source/images/groupby.png)
+
+### Animated charting
+
+Using the same aggregation query inside an animated matplotlib loop, we can watch as the time slices fill in with events. In this simple example, the last time slice shows a changing count and average as it responds to the events as they come in.
+
+![](doc/source/images/chart.png)
 
 # Links
-* 
-*
-*
-*
+* [**Ingest and Analyze Streaming Event Data at Scale with IBM Db2 EventStore**](http://www.ibmbigdatahub.com/blog/ingest-and-analyze-streaming-event-data-scale-ibm-eventstore)
+* [**Fast Data Ingestion, ML Equates to Smarter Decisions Faster**](https://www.ibm.com/blogs/think/2018/03/db2-event-store/)
+* [**IBM Db2 Event Store Solution Brief**](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?htmlfid=09014509USEN&)
+* [**Overview of IBM Db2 Event Store Enterprise Edition**](https://www.ibm.com/support/knowledgecenter/en/SSGNPV/eventstore/local/overview.html#overview)
+* [**Developer Guide for IBM Db2 Event Store Client APIs**](https://www.ibm.com/support/knowledgecenter/en/SSGNPV/eventstore/desktop/dev-guide.html)
+* [**IBM Marketplace**](https://www.ibm.com/us-en/marketplace/db2-event-store)
 
 # Learn more
 * **Data Analytics Code Patterns**: Enjoyed this Code Pattern? Check out our other [Data Analytics Code Patterns](https://developer.ibm.com/code/technologies/data-science/)
