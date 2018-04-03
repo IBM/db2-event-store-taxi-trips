@@ -137,7 +137,7 @@ Number of records inserted: 1600, total time: 434ms
 Number of records inserted: 2000, total time: 473ms
 ```
 
-The provided JSON file has 50,000 events.  The loader continue until it runs out of events or until the final cell of the notebook signals for it to stop.
+The provided JSON file has 50,000 events.  The loader continues until it runs out of events or until the final cell of the notebook signals for it to stop.
 
 ## Run SQL queries
 
