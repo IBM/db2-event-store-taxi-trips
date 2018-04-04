@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/IBM/db2-event-store-taxi-trips.svg?branch=master)](https://travis-ci.org/IBM/db2-event-store-taxi-trips)
+
 # Analyze event streams with taxi cab data
 
 In this code pattern, we will stream data from a Java program and use a Jupyter notebook to
