@@ -34,7 +34,7 @@ When the reader has completed this code pattern, they will understand how to:
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
 
 # Watch the Video
-[![](http://img.youtube.com/vi/7R-Q3bxp2rI/0.jpg)](https://www.youtube.com/watch?v=J7R-Q3bxp2rI)
+[![](http://img.youtube.com/vi/7R-Q3bxp2rI/0.jpg)](https://www.youtube.com/watch?v=7R-Q3bxp2rI)
 
 # Steps
 
