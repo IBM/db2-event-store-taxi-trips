@@ -63,7 +63,7 @@ Install IBM® Db2® Event Store Developer Edition on Mac, Linux, or Windows by f
 
 Clone the `db2-event-store-taxi-trips` locally. In a terminal, run:
 
-```
+```bash
 git clone https://github.com/IBM/db2-event-store-taxi-trips
 ```
 
@@ -164,13 +164,17 @@ The first query to try is a simple `count(*)` query. Using the `show()` function
 
 The next query uses a **GROUP BY** to aggregate by time. With this query you will see the counts and average stats for each 15 minute interval. By running this repeatedly (the notebook includes a short query loop), you will see that as the events come in the latest time interval has a growing count and changing averages.
 
-![](doc/source/images/groupby.png)
+![groupby](doc/source/images/groupby.png)
 
 ### Animated charting
 
 Using the same aggregation query inside an animated matplotlib loop, we can watch as the time slices fill in with events. In this simple example, the last time slice shows a changing count and average as it responds to the events as they come in.
 
 ![chart](doc/source/images/chart.png)
+
+### Example notebook with output
+
+If you didn't get to run it yourself, take a look at the notebook with output [here](examples/taxi_trips.ipynb).
 
 # Links
 
