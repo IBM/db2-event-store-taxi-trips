@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IBM/db2-event-store-taxi-trips.svg?branch=master)](https://travis-ci.org/IBM/db2-event-store-taxi-trips)
+[![Build Status](https://api.travis-ci.org/IBM/db2-event-store-taxi-trips.svg?branch=master)](https://travis-ci.org/IBM/db2-event-store-taxi-trips)
 
 # Analyze event streams with taxi cab data
 
@@ -29,7 +29,7 @@ When the reader has completed this code pattern, they will understand how to:
 
 * [IBM Db2 Event Store](https://www.ibm.com/products/db2-event-store): In-memory database optimized for event-driven data processing and analysis.
 * [IBM Watson Studio](https://www.ibm.com/cloud/watson-studio): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
-* [Jupyter Notebook](http://jupyter.org/): An open source web application that allows you to create and share documents that contain live code, equations, visualizations, and explanatory text.
+* [Jupyter Notebook](https://jupyter.org/): An open source web application that allows you to create and share documents that contain live code, equations, visualizations, and explanatory text.
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 * [Java](https://java.com/): A secure, object-oriented programming language for creating applications.
 
@@ -41,7 +41,7 @@ When the reader has completed this code pattern, they will understand how to:
 
 # Watch the Video
 
-[![video](http://img.youtube.com/vi/7R-Q3bxp2rI/0.jpg)](https://www.youtube.com/watch?v=7R-Q3bxp2rI)
+[![video](https://img.youtube.com/vi/7R-Q3bxp2rI/0.jpg)](https://www.youtube.com/watch?v=7R-Q3bxp2rI)
 
 # Steps
 
@@ -178,16 +178,16 @@ If you didn't get to run it yourself, take a look at the notebook with output [h
 
 # Links
 
-* [**Ingest and Analyze Streaming Event Data at Scale with IBM Db2 EventStore**](http://www.ibmbigdatahub.com/blog/ingest-and-analyze-streaming-event-data-scale-ibm-eventstore)
+* [**Ingest and Analyze Streaming Event Data at Scale with IBM Db2 EventStore**](https://www.ibmbigdatahub.com/blog/ingest-and-analyze-streaming-event-data-scale-ibm-eventstore)
 * [**Fast Data Ingestion, ML Equates to Smarter Decisions Faster**](https://www.ibm.com/blogs/think/2018/03/db2-event-store/)
 * [**IBM Db2 Event Store Solution Brief**](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?htmlfid=09014509USEN&)
 * [**Overview of IBM Db2 Event Store Enterprise Edition**](https://www.ibm.com/support/knowledgecenter/en/SSGNPV_1.1.3/local/overview.html#overview)
 * [**Developer Guide for IBM Db2 Event Store Client APIs**](https://www.ibm.com/support/knowledgecenter/en/SSGNPV_1.1.3/develop/dev-guide.html)
-* [**IBM Marketplace**](https://www.ibm.com/us-en/marketplace/db2-event-store)
+* [**IBM Marketplace**](https://www.ibm.com/products/db2-event-store)
 
 # Learn more
 
-* **Data Analytics Code Patterns**: Enjoyed this code pattern? Check out our other [data analytics code patterns](https://developer.ibm.com/code/technologies/analytics/)
+* **Data Analytics Code Patterns**: Enjoyed this code pattern? Check out our other [data analytics code patterns](https://developer.ibm.com/technologies/analytics/)
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our code pattern videos
 * **IBM Watson Studio**: Master the art of data science with IBM's [Watson Studio](https://www.ibm.com/cloud/watson-studio)
 
