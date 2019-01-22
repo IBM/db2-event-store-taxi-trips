@@ -1,4 +1,4 @@
-[![Build Status](https://api.travis-ci.org/IBM/db2-event-store-taxi-trips.svg?branch=master)](https://travis-ci.org/IBM/db2-event-store-taxi-trips)
+[![Build Status](https://travis-ci.org/IBM/db2-event-store-taxi-trips.svg?branch=master)](https://travis-ci.org/IBM/db2-event-store-taxi-trips)
 
 # Analyze event streams with taxi cab data
 
