@@ -79,8 +79,9 @@ mvn -v
 
 To download and install maven, refer to [maven.](https://maven.apache.org/download.cgi)
 
+> Note: In case of Windows based system you have to set maven path in System Variables
+
 #### Download dependencies
-In case of Windows based system you have to set maven path in System Variables
 
 Use maven to download the dependencies with the following commands:
 
